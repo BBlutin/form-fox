@@ -39,8 +39,8 @@ bot.tc = require('tinycolor2');
 bot.status = 0;
 bot.guildCount = 0;
 bot.statuses = [
-	() => `ff!h | in ${bot.guilds.cache.size} guilds!`,
-	() => `ff!h | serving ${bot.users.cache.size} users!`
+	() => `Tenezia RP`,
+	() => `servir ${bot.users.cache.size} membres`
 	// `ff!h | https://ff.greysdawn.com`
 ];
 
