@@ -1,31 +1,31 @@
 module.exports = {
 	data: {
 		name: 'apply',
-		description: 'Apply to a form',
+		description: 'Candidater à un championnat',
 		options: [{
 			name: 'form_id',
-			description: "The form's ID",
+			description: "L'identifiant du formulaire",
 			type: 3,
 			required: false,
 			autocomplete: true
 		}]
 	},
 	usage: [
-		"[form_id] - Start a new form response"
+		"[form_id] - Démarrer une candidature"
 	],
 	async execute(ctx) {
 		var id = ctx.options.getString('form_id')?.toLowerCase().trim();
 		var form;
 		if(!id) {
 			form = await ctx.client.stores.forms.getByApplyChannel(ctx.guild.id, ctx.channel.id);
-			if(!form.id) return "Please supply a form ID, or use this in a form's apply channel!";
+			if(!form.id) return "Entrez un ID svp, ou utilisez cette commande dans le channel dédié!";
 		} else {
 			form = await ctx.client.stores.forms.get(ctx.guildId, id);;
-			if(!form.id) return 'Form not found!';
+			if(!form.id) return 'Formulaire non trouvé!';
 		}
 
 		if(form.apply_channel && form.apply_channel != ctx.channel.id)
-		return `This isn't the right channel for that form! Please apply in <#${form.apply_channel}>`;
+		return `Ce n'est pas le bon channel pour ce formulaire ! Candidatez dans <#${form.apply_channel}>`;
 
 		var cfg = await ctx.client.stores.configs.get(ctx.guildId);
 

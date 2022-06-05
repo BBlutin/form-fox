@@ -1,7 +1,7 @@
 module.exports = {
 	data: {
 		name: 'help',
-		description: "View command help",
+		description: "Voir les commandes disponibles.",
 		options: [
 			{
 				name: 'module',

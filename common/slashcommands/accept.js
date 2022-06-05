@@ -11,9 +11,9 @@ module.exports = {
 		description: '',
 		type: 3
 	},
-	description: "Accept a response",
+	description: "Accepter un formulaire",
 	usage: [
-		'Right click a message -> `accept`'
+		'Clique droit sur un message -> `accept`'
 	],
 	async execute(ctx) {
 		var msg = ctx.options.getMessage('message');
@@ -25,7 +25,7 @@ module.exports = {
 
 		var embed = msg.embeds[0];
         embed.color = parseInt('55aa55', 16);
-        embed.footer = {text: 'Response accepted!'};
+        embed.footer = {text: 'Réponse acceptée !'};
         embed.timestamp = new Date().toISOString();
         embed.author = {
         	name: `${ctx.user.username}#${ctx.user.discriminator}`,
@@ -46,13 +46,12 @@ module.exports = {
             }
 
             await u2.send({embeds: [{
-                title: 'Response accepted!',
+                title: 'Formulaire acceptée !',
                 description: welc,
                 fields: [
-                	{name: 'Server', value: `${msg.channel.guild.name} (${msg.channel.guild.id})`},
-                	{name: 'Form name', value: `${post.response.form.name}`},
-                	{name: 'Form ID', value: `${post.response.form.hid}`},
-                	{name: 'Response ID', value: `${post.response.hid}`}
+                	{name: 'Serveur', value: `${msg.channel.guild.name} (${msg.channel.guild.id})`},
+                	{name: 'Formulaire', value: `${post.response.form.name}`},
+                	{name: 'ID de réponse', value: `${post.response.hid}`}
                 ],
                 color: parseInt('55aa55', 16),
                 timestamp: new Date().toISOString()

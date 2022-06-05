@@ -34,7 +34,7 @@ const NACTIONS = [
 
 const qTypes = {
 	'mc': {
-		description: 'allows the user to choose one option from multiple choices',
+		description: 'Permet à l\'utilisateur de choisir une parmis plusieurs réponses',
 		alias: ['multiple choice', 'multi', 'mc'],
 		message: (current) => {
 			var message = [
@@ -43,10 +43,10 @@ const qTypes = {
 				})
 			];
 
-			if(current.other) message.push({name: 'Other', value: 'Enter a custom response'});
+			if(current.other) message.push({name: 'Other', value: 'Entrez votre réponse ici'});
 			return message;
 		},
-		text: "interact or type the respective emoji/character to choose an option.",
+		text: "Interagi avec l\emoji pour choisir une réponse",
 		buttons: (current) => {
 			var r = [{
 				type: 2,
@@ -66,13 +66,13 @@ const qTypes = {
 			return r;
 		},
 		setup: async (bot, msg, message) => {
-			await message.edit(`Please enter up to 10 options to choose from, separated by new lines.`);
+			await message.edit(`Entre jusqu\a 10 réponses, séparé par des nouvelles lignes.`);
 			var resp = (await msg.channel.awaitMessages({filter: m => m.author.id == msg.author.id, max: 1, time: 5 * 60 * 1000})).first();
 			if(!resp) return 'Timed out! Aborting!';
 			var choices = resp.content.split("\n")/*.filter(x => x)*/;
 			await resp.delete()
 
-			await message.edit("Would you like to include an 'other' option?");
+			await message.edit("Voulez-vous inclure une option 'autre' ?");
 			confirmReacts.forEach(r => message.react(r));
 
 			var confirm = await bot.utils.getConfirmation(bot, msg, msg.author);
@@ -93,13 +93,13 @@ const qTypes = {
     			embed.fields[embed.fields.length - 1].value = "Awaiting response...";
         		await msg.edit({embeds: [embed]});
 
-        		await msg.channel.send('Please enter a value below! (or type `cancel` to cancel)')
+        		await msg.channel.send('Entrez une réponse svp! (ou entrer `cancel` pour annuler)')
 				if(!response.selection) response.selection = [];
                 response.selection.push('OTHER')
 
                 return {response, menu: true, send: false}
     		} else {
-    			msg.channel.send('Invalid choice! Please select something else');
+    			msg.channel.send('Choix invalide! Choisissez une autre réponse svp');
     			return undefined;
     		}
 		},
@@ -115,12 +115,12 @@ const qTypes = {
 				embed.fields[embed.fields.length - 1].value = "Awaiting response...";
         		await msg.edit({embeds: [embed]});
 
-        		await message.channel.send('Please enter a value below! (or type `cancel` to cancel)')
+        		await message.channel.send('Entrez une réponse svp! (ou entrer `cancel` pour annuler)')
         		if(!response.selection) response.selection = [];
                 response.selection.push('OTHER')
                 return {response, menu: true};
 			} else {
-    			await message.channel.send('Invalid choice! Please select something else');
+    			await message.channel.send('Choix invalide! Choisissez une autre réponse svp');
     			return undefined;
     		}
 		},
@@ -138,9 +138,9 @@ const qTypes = {
 					var choice = await inter.client.utils.awaitSelection(
 						inter,
 						ch,
-						"Select an option below",
+						"Choisissez une option ci-dessous",
 						{
-							placeholder: 'Select option'
+							placeholder: 'Choisir l\'option'
 						}
 					);
 					if(!Array.isArray(choice)) return await inter.followUp(choice);
@@ -152,7 +152,7 @@ const qTypes = {
 					embed.fields[embed.fields.length - 1].value = "Awaiting response...";
 	        		await inter.message.edit({embeds: [embed]});
 
-	        		await msg.channel.send('Please enter a value below! (or type `cancel` to cancel)')
+	        		await msg.channel.send('Entrez une réponse svp! (ou entrer `cancel` pour annuler)')
 					if(!response.selection) response.selection = [];
 	                response.selection.push('OTHER')
 
@@ -163,9 +163,9 @@ const qTypes = {
 		async roleSetup({ctx, question, role}) {
 			var choice = await ctx.client.utils.awaitSelection(ctx, question.choices.map((e, i) => {
 				return {label: e.slice(0, 100), value: `${i}`}
-			}), "What choice do you want to attach this to?", {
+			}), "A quel choix voulez lier ceci?", {
 				min_values: 1, max_values: 1,
-				placeholder: 'Select choice'
+				placeholder: 'Selctionner un choix'
 			})
 			if(typeof choice == 'string') return choice;
 
@@ -180,9 +180,9 @@ const qTypes = {
 		async roleRemove({ctx, question, role}) {
 			var choice = await ctx.client.utils.awaitSelection(ctx, question.choices.map((e, i) => {
 				return {label: e.slice(0, 100), value: `${i}`}
-			}), "What choice do you want to detach this from?", {
+			}), "De quel choix voulez vous délier ce formulaire ?", {
 				min_values: 1, max_values: 1,
-				placeholder: 'Select choice'
+				placeholder: 'Selectionner un choix'
 			})
 			if(typeof choice == 'string') return choice;
 
