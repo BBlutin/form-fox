@@ -32,22 +32,22 @@ module.exports = {
 		try {
 			var message = await chan.send({
 				embeds: [{
-					title: form.name,
+					title: '🏁 ' + form.name + ' 🏁',
 					description: form.description,
 					color: parseInt(!form.open ? 'aa5555' : form.color || '55aa55', 16),
-					fields: [{name: 'Response Count', value: responses?.length.toString() || '0'}],
+					fields: [{name: 'Nombre de candidatures :', value: responses?.length.toString() + '/5 places' || '0/5 places'}],
 					footer: {
-						text: `Form ID: ${form.hid} | ` +
+						text: `ID : ${form.hid} \n` +
 							  (!form.open ?
-							  'this form is not accepting responses right now!' :
-							  'click below to apply to this form!')
+							  '🔴 Les candidatures sont fermée pour l\'instant' :
+							  '🟢 Appuyez sur le bouton pour soumettre une candidature !')
 					}
 				}],
 				components: [{
 					type: 1,
 					components: [{
 						type: 2,
-						label: 'Apply',
+						label: 'Candidature',
 						emoji: form.emoji || "📝",
 						style: 1,
 						custom_id: `${form.hid}-apply`
