@@ -285,20 +285,20 @@ class ResponsePostStore {
             case '❌':
                 var reason;
                 await msg.channel.send([
-                    'Would you like to give a denial reason?\n',
-                    'Type `skip` to skip adding one, or ',
-                    '`cancel` to cancel the denial!'
+                    'Quelle est la raison ?\n',
+                    'Pour passer, tapper `skip`, ou ',
+                    'pour annuler tapper `cancel` !'
                 ].join(''));
                 var resp = await msg.channel.awaitMessages({filter: m => m.author.id == user.id, time: 2 * 60 * 1000, max: 1});
                 if(!resp?.first()) return await msg.channel.send('Err! Timed out!');
                 resp = resp.first().content;
-                if(resp.toLowerCase() == 'cancel') return await msg.channel.send('Action cancelled!');
-                if(resp.toLowerCase() == 'skip') reason = '*(no reason given)*';
+                if(resp.toLowerCase() == 'cancel') return await msg.channel.send('Action annulée !');
+                if(resp.toLowerCase() == 'skip') reason = '*(aucune raison spécifiée)*';
                 else reason = resp;
 
                 var embed = msg.embeds[0];
                 embed.color = parseInt('aa5555', 16);
-                embed.footer = {text: 'Response denied!'};
+                embed.footer = {text: 'Candidature refusée !'};
                 embed.timestamp = new Date().toISOString();
                 embed.author = {
                     name: `${user.username}#${user.discriminator}`,
@@ -331,10 +331,10 @@ class ResponsePostStore {
                     await post.delete();
                 } catch(e) {
                     console.log(e);
-                    return await msg.channel.send('ERR! Response denied, but couldn\'t message the user!');
+                    return await msg.channel.send('ERR! Candidature refusée , but couldn\'t message the user!');
                 }
 
-                return await msg.channel.send('Response denied!');
+                return await msg.channel.send('Candidature refusée !');
             case '✅':
                 var embed = msg.embeds[0];
                 embed.color = parseInt('55aa55', 16);
@@ -470,20 +470,20 @@ class ResponsePostStore {
             case 'deny':
                 var reason;
                 await msg.channel.send([
-                    'Would you like to give a denial reason?\n',
-                    'Type `skip` to skip adding one, or ',
-                    '`cancel` to cancel the denial!'
+                    'Quelle est la raison ?\n',
+                    'Pour passer, tapper `skip`, ou ',
+                    'pour annuler tapper `cancel` !'
                 ].join(''));
                 var resp = await msg.channel.awaitMessages({filter: m => m.author.id == user.id, time: 2 * 60 * 1000, max: 1});
                 if(!resp?.first()) return await msg.channel.send('Err! Timed out!');
                 resp = resp.first().content;
-                if(resp.toLowerCase() == 'cancel') return await msg.channel.send('Action cancelled!');
-                if(resp.toLowerCase() == 'skip') reason = '*(no reason given)*';
+                if(resp.toLowerCase() == 'cancel') return await msg.channel.send('Action annulée !');
+                if(resp.toLowerCase() == 'skip') reason = '*(aucune raison spécifée)*';
                 else reason = resp;
 
                 var embed = msg.embeds[0];
                 embed.color = parseInt('aa5555', 16);
-                embed.footer = {text: 'Response denied!'};
+                embed.footer = {text: 'Candidature refusée !'};
                 embed.timestamp = new Date().toISOString();
                 embed.author = {
                     name: `${user.username}#${user.discriminator}`,
@@ -500,7 +500,7 @@ class ResponsePostStore {
                     await msg.reactions.removeAll();
 
                     await u2.send({embeds: [{
-                        title: 'Response denied!',
+                        title: 'Candidature refusée !',
                         description: [
                             `Formulaire: ${post.response.form.name}`,
                             `ID de candidature: ${post.response.hid}`
@@ -519,10 +519,10 @@ class ResponsePostStore {
                     await post.delete();
                 } catch(e) {
                     console.log(e);
-                    return await msg.channel.send('ERR! Response denied, but couldn\'t message the user!');
+                    return await msg.channel.send('ERR! Candidature refusée , but couldn\'t message the user!');
                 }
 
-                return await msg.channel.send('Response denied!');
+                return await msg.channel.send('Candidature refusée !');
             case 'accept':
                 var embed = msg.embeds[0];
                 embed.color = parseInt('55aa55', 16);

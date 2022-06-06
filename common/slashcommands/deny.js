@@ -63,7 +63,7 @@ module.exports = {
             return 'ERR! Response denied, but couldn\'t message the user!';
         }
 
-		return "Response denied!";
+		return "Candidature refusée !";
 	},
 	permissions: ['MANAGE_MESSAGES'],
 	opPerms: ['MANAGE_RESPONSES']

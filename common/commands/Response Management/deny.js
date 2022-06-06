@@ -16,21 +16,21 @@ module.exports = {
 
 		var reason;
 		await msg.channel.send([
-            'Would you like to give a denial reason?\n',
-            'Type `skip` to skip adding one, or ',
-            '`cancel` to cancel the denial!'
+            'Quelle est la raison ?\n',
+            'Pour passer, tapper `skip`, ou ',
+            'pour annuler tapper `cancel` !'
         ].join(''));
 		var resp = await msg.channel.awaitMessages({filter: m => m.author.id == msg.author.id, time: 2 * 60 * 1000, max: 1});
         if(!resp?.first()) return 'Erreur! Timed out!';
         resp = resp.first().content;
-        if(resp.toLowerCase() == 'cancel') return 'Action cancelled!';
-        if(resp.toLowerCase() == 'skip') reason = '*(no reason given)*';
+        if(resp.toLowerCase() == 'cancel') return 'Action annulée !';
+        if(resp.toLowerCase() == 'skip') reason = '*(aucune raison spécifiée)*';
         else reason = resp;
 
 		if(message) {
 			var embed = message.embeds[0];
 			embed.color = parseInt('aa5555', 16);
-			embed.footer = {text: 'Response denied!'};
+			embed.footer = {text: 'Candidature refusée !'};
 			embed.timestamp = new Date().toISOString();
 			try {
 				await message.edit({embeds: [embed]});
@@ -60,7 +60,7 @@ module.exports = {
 			return 'ERR! Response denied, but couldn\'t message the user!';
 		}
 
-		return 'Response denied!';
+		return 'Candidature refusée !';
 	},
 	alias: ['fail'],
 	permissions: ['MANAGE_MESSAGES'],
