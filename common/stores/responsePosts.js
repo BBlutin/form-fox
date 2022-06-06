@@ -266,17 +266,16 @@ class ResponsePostStore {
         if(!u2) return await msg.channel.send("ERR! Couldn't fetch that response's user!");
 
         var template = {
-            title: "Response",
+            title: "Candidature",
             description: [
-                `Form name: ${post.response.form.name}`,
-                `Form ID: ${post.response.form.hid}`,
-                `User: ${u2.username}#${u2.discriminator} (${u2})`,
-                `Response ID: ${post.response.hid}`
+                `Formulaire: ${post.response.form.name}`,
+                `Utilisateur: ${u2.username}#${u2.discriminator} (${u2})`,
+                `ID de candidature: ${post.response.hid}`
             ].join('\n'),
             color: parseInt('ccaa55', 16),
             fields: [],
             timestamp: post.response.received,
-            footer: {text: 'Awaiting acceptance/denial...'}
+            footer: {text: 'En attente ...'}
         }
 
         var embeds = this.bot.handlers.response.buildResponseEmbeds(post.response, template);
@@ -313,14 +312,12 @@ class ResponsePostStore {
                     await msg.reactions.removeAll();
 
                     await u2.send({embeds: [{
-                        title: 'Response denied!',
+                        title: 'Candidature refusée !',
                         description: [
-                            `Server: ${msg.channel.guild.name} (${msg.channel.guild.id})`,
-                            `Form name: ${post.response.form.name}`,
-                            `Form ID: ${post.response.form.hid}`,
-                            `Response ID: ${post.response.hid}`
+                            `Formulaire: ${post.response.form.name}`,
+                            `ID de candidature: ${post.response.hid}`
                         ].join("\n"),
-                        fields: [{name: 'Reason', value: reason}],
+                        fields: [{name: 'Raison', value: reason}],
                         color: parseInt('aa5555', 16),
                         timestamp: new Date().toISOString()
                     }]})
@@ -505,12 +502,10 @@ class ResponsePostStore {
                     await u2.send({embeds: [{
                         title: 'Response denied!',
                         description: [
-                            `Server: ${msg.channel.guild.name} (${msg.channel.guild.id})`,
-                            `Form name: ${post.response.form.name}`,
-                            `Form ID: ${post.response.form.hid}`,
-                            `Response ID: ${post.response.hid}`
+                            `Formulaire: ${post.response.form.name}`,
+                            `ID de candidature: ${post.response.hid}`
                         ].join("\n"),
-                        fields: [{name: 'Reason', value: reason}],
+                        fields: [{name: 'Raison', value: reason}],
                         color: parseInt('aa5555', 16),
                         timestamp: new Date().toISOString()
                     }]})

@@ -51,14 +51,14 @@ const qTypes = {
 			var r = [{
 				type: 2,
 				style: 2,
-				label: 'Select',
+				label: 'Selectionner',
 				custom_id: 'select',
 				emoji: '✉️'
 			}]
 			if(current.other) r.push({
 				type: 2,
 				style: 2,
-				label: 'Fill in',
+				label: 'Autre',
 				custom_id: 'other',
 				emoji: '📝'
 			})
@@ -237,14 +237,14 @@ const qTypes = {
 			var r = [{
 				type: 2,
 				style: 2,
-				label: 'Select',
+				label: 'Selectionner',
 				custom_id: 'select',
 				emoji: '✉️'
 			}]
 			if(current.other) r.push({
 				type: 2,
 				style: 2,
-				label: 'Fill in',
+				label: 'Autre',
 				custom_id: 'other',
 				emoji: '📝'
 			})
@@ -252,7 +252,7 @@ const qTypes = {
 			r.push({
 				type: 2,
 				style: 2,
-				label: 'Finish selection',
+				label: 'Terminer la selection',
 				custom_id: 'finish',
 				emoji: '📥'
 			})
@@ -487,7 +487,7 @@ const qTypes = {
 		handleMessage: async (message, response) => {
 			response.answers.push(message.content);
 			if(message.attachments.size > 0)
-				response.answers[response.answers.length - 1] += "\n\n**Attachments:**\n" + message.attachments.map(a => a.url).join("\n");
+				response.answers[response.answers.length - 1] += "\n\n**Fichiers:**\n" + message.attachments.map(a => a.url).join("\n");
 			return {response, send: true};
 		},
 		async roleSetup({ctx, question, role}) {
@@ -660,7 +660,7 @@ const qTypes = {
 				return undefined;
 			}
 			response.answers.push(message.content);
-			response.answers[response.answers.length - 1] += "\n\n**Attachments:**\n" + message.attachments.map(a => a.url).join("\n");
+			response.answers[response.answers.length - 1] += "\n\n**Fichiers:**\n" + message.attachments.map(a => a.url).join("\n");
 			return {response, send: true};
 		}
 	},
@@ -674,7 +674,7 @@ const qTypes = {
 				return undefined;
 			}
 			response.answers.push(message.content);
-			response.answers[response.answers.length - 1] += "\n\n**Attachments:**\n" + message.attachments.map(a => a.url).join("\n");
+			response.answers[response.answers.length - 1] += "\n\n**Fichiers:**\n" + message.attachments.map(a => a.url).join("\n");
 			return {response, send: true};
 		}
 	},

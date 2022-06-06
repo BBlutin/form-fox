@@ -322,17 +322,16 @@ class ResponseHandler {
 			});
 			this.bot.emit('SUBMIT', created);
 			var template = {
-				title: "Response",
+				title: "Candidature",
 				description: [
-					`Form name: ${response.form.name}`,
-					`Form ID: ${response.form.hid}`,
-					`User: ${user.username}#${user.discriminator} (${user})`,
-					`Response ID: ${created.hid}`
+					`Formulaire: ${response.form.name}`,
+					`Utilisateur: ${user.username}#${user.discriminator} (${user})`,
+					`ID de candidature: ${created.hid}`
 				].join('\n'),
 				color: parseInt('ccaa55', 16),
 				fields: [],
 				timestamp: new Date().toISOString(),
-				footer: {text: 'Awaiting acceptance/denial...'}
+				footer: {text: 'En attente ...'}
 			}
 			var embeds = this.buildResponseEmbeds(response, template);
 			await prompt.edit(embeds[0])

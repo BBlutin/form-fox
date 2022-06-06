@@ -44,14 +44,12 @@ module.exports = {
 			response.status = 'denied';
 			response = await response.save()
 			await user.send({embeds: [{
-				title: 'Response denied!',
+				title: 'Candidature refusée !',
 				description: [
-					`Server: ${msg.channel.guild.name} (${msg.channel.guild.id})`,
-					`Form name: ${response.form.name}`,
-					`Form ID: ${response.form.hid}`,
-					`Response ID: ${response.hid}`
+					`Formulaire: ${response.form.name}`,
+					`ID de candidature: ${response.hid}`
 				].join("\n"),
-				fields: [{name: 'Reason', value: reason}],
+				fields: [{name: 'Raison', value: reason}],
 				color: parseInt('aa5555', 16),
 				timestamp: new Date().toISOString()
 			}]})
