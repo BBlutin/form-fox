@@ -46,7 +46,7 @@ const qTypes = {
 			if(current.other) message.push({name: 'Other', value: 'Entrez votre réponse ici'});
 			return message;
 		},
-		text: "Interagi avec l\emoji pour choisir une réponse",
+		text: "Interagi avec l\'emoji pour choisir une réponse,",
 		buttons: (current) => {
 			var r = [{
 				type: 2,
