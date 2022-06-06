@@ -15,7 +15,7 @@ module.exports = {
 				title: form.name,
 				description: form.description,
 				color: parseInt(!form.open ? 'aa5555' : form.color || '55aa55', 16),
-				fields: [{name: '', value: ''}],
+				fields: [{name: '-', value: ''}],
 				footer: {
 					text: `Form ID: ${form.hid} | ` +
 						  (!form.open ?
