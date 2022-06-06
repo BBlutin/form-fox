@@ -360,8 +360,8 @@ class ResponseHandler {
 
 		await response.delete();
 		return {
-			msg: 'Candidature envoyée ! \nID de réponse: '+created.hid +
-				 '\nGarde cet ID en cas de soucis avec ton formulaire.',
+			msg: 'Candidature envoyée ! \nID de candidature: '+created.hid +
+				 '\nConserve cet ID en cas de soucis.',
 			success: true
 		}
 	}

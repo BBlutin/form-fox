@@ -386,9 +386,9 @@ const qTypes = {
 					var choice = await inter.client.utils.awaitSelection(
 						inter,
 						ch,
-						"Select an option below",
+						"Choisissez une option",
 						{
-							placeholder: 'Select option',
+							placeholder: 'Dérouler la liste',
 							max_values: question.choices.length
 						}
 					);

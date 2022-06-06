@@ -49,7 +49,7 @@ module.exports = {
                 description: [
                     `Serveur: ${msg.channel.guild.name} (${msg.channel.guild.id})`,
                     `Formulaire: ${post.response.form.name}`,
-                    `ID de réponse: ${post.response.hid}`
+                    `ID de candidature: ${post.response.hid}`
                 ].join("\n"),
                 fields: [{name: 'Raison', value: reason}],
                 color: parseInt('aa5555', 16),
