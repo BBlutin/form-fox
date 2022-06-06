@@ -178,16 +178,15 @@ class ResponseHandler {
 				fields: [],
 				color: parseInt(response.form.color || 'ccaa55', 16),
 				footer: {text: [
-					'react with ✅ to finish; ',
-					'react with ❌ to cancel. ',
-					'respective keywords: submit, cancel'
+					'réagis avec ✅ pour valider; ',
+					'réagis avec ❌ pour annuler. ',
 				].join(' ')}
 			};
 
 			var embeds = this.buildResponseEmbeds(response, template);
 
 			var content = {
-				content: "How's this look?",
+				content: "Alors, ça te convient ?",
 				embeds: [embeds[0]],
 				components: [{ type: 1, components: SUBMIT }]
 			}
@@ -362,8 +361,8 @@ class ResponseHandler {
 
 		await response.delete();
 		return {
-			msg: 'Response sent! Response ID: '+created.hid +
-				 '\nUse this code to make sure your response has been received',
+			msg: 'Candidature envoyée ! \nID de réponse: '+created.hid +
+				 '\nGarde cet ID en cas de soucis avec ton formulaire.',
 			success: true
 		}
 	}
@@ -400,7 +399,7 @@ class ResponseHandler {
 		}
 
 		this.menus.delete(message.channel.id);
-		return {msg: 'Response cancelled!', success: true};
+		return {msg: 'Formulaire annulé !', success: true};
 	}
 
 	async autoCancel(ctx) {
@@ -411,8 +410,8 @@ class ResponseHandler {
 			await response.delete();
 			await prompt.edit({
 				embeds: [{
-					title: "Response cancelled",
-					description: "Left the server; this form response has been automatically cancelled!",
+					title: "Formulaire annulé !",
+					description: "Vous avez quitté le serveur; ce formulaire a été automatiquement annulé !",
 					color: parseInt('aa5555', 16),
 					timestamp: new Date().toISOString()
 				}],

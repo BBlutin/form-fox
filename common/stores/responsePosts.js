@@ -614,7 +614,7 @@ class ResponsePostStore {
 						components: cmp
 					})
                     await this.bot.stores.tickets.create(msg.guild.id, ch2.id, post.response.hid);
-                    await ctx.followUp(`Channel created! <#${ch2.id}>`);
+                    await ctx.followUp(`Channel créé ! <#${ch2.id}>`);
                     return;
                 } catch(e) {
                     return await msg.channel.send('ERR: '+e.message);
@@ -623,17 +623,16 @@ class ResponsePostStore {
 
         if(PGBTNS(1,1).find(pg => pg.custom_id == ctx.customId)) {
             var template = {
-                title: "Response",
+                title: "Candidature",
                 description: [
-                    `Form name: ${post.response.form.name}`,
-                    `Form ID: ${post.response.form.hid}`,
-                    `User: ${u2.username}#${u2.discriminator} (${u2})`,
-                    `Response ID: ${post.response.hid}`
+                    `ID formulaire: ${post.response.form.hid}`,
+                    `Utilisateur: ${u2.username}#${u2.discriminator} (${u2})`,
+                    `ID de réponse: ${post.response.hid}`
                 ].join('\n'),
                 color: parseInt('ccaa55', 16),
                 fields: [],
                 timestamp: post.response.received,
-                footer: {text: 'Awaiting acceptance/denial...'}
+                footer: {text: 'STATUT : En attente...'}
             }
 
             var embeds = this.bot.handlers.response.buildResponseEmbeds(post.response, template);

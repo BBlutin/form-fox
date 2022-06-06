@@ -29,8 +29,8 @@ module.exports = {
 				if(!forms.length) return 'Form not found!';
 				
 				message = await msg.channel.send([
-					'Are you sure you want to delete this form?\n',
-					'WARNING: All response data for this form will be lost! This cannot be undone!'
+					'Voulez-vous vraiment supprimer ce formulaire ?\n',
+					'ATTENTION: Toutes les réponse seront perdues !'
 				].join(''));
 				REACTS.forEach(r => message.react(r));
 

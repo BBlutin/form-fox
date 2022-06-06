@@ -35,12 +35,12 @@ module.exports = {
 					title: '🏁 ' + form.name + ' 🏁',
 					description: form.description,
 					color: parseInt(!form.open ? 'aa5555' : form.color || '55aa55', 16),
-					fields: [{name: 'Nombre de candidatures :', value: responses?.length.toString() + '/5 places' || '0/5 places'}],
+					fields: [{name: '', value: ''}],
 					footer: {
 						text: `ID : ${form.hid} \n` +
 							  (!form.open ?
 							  '🔴 Les candidatures sont fermée pour l\'instant' :
-							  '🟢 Appuyez sur le bouton pour soumettre une candidature !')
+							  '🟢 Appuyez sur le bouton pour démarrer une candidature !')
 					}
 				}],
 				components: [{

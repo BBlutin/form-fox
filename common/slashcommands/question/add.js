@@ -130,7 +130,7 @@ module.exports = {
 		form.questions.splice(pos - 1, 0, question);
 		await form.save()
 
-		return "Question added!";
+		return "Question ajoutée !";
 	},
 	async auto(ctx) {
 		var forms = await ctx.client.stores.forms.getAll(ctx.guild.id);

@@ -114,7 +114,7 @@ module.exports.subcommands.add = {
 			return 'ERR! '+e;
 		}
 
-		return 'Question added!';
+		return 'Question ajoutée !';
 	},
 	alias: ['a', '+']
 }

@@ -15,12 +15,12 @@ module.exports = {
 				title: form.name,
 				description: form.description,
 				color: parseInt(!form.open ? 'aa5555' : form.color || '55aa55', 16),
-				fields: [{name: 'Response Count', value: responses?.length.toString() || '0'}],
+				fields: [{name: '', value: ''}],
 				footer: {
 					text: `Form ID: ${form.hid} | ` +
 						  (!form.open ?
-						  'this form is not accepting responses right now!' :
-						  'react below to apply to this form!')
+						  '🔴 Les candidatures sont actuellement fermées !' :
+						  '🟢 Les candidatures sont actuellement ouvertes !')
 				}
 			}]});
 			message.react(form.emoji || '📝');

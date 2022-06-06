@@ -24,7 +24,7 @@ module.exports = {
 		if(message) {
 			var embed = message.embeds[0];
 			embed.color = parseInt('aa5555', 16);
-			embed.footer = {text: 'Response accepted!'};
+			embed.footer = {text: 'Candidature acceptéee !'};
 			embed.timestamp = new Date().toISOString();
 			try {
 				await message.edit({embeds: [embed]});
@@ -45,13 +45,10 @@ module.exports = {
 			response.status = 'accepted';
             response = await response.save()
             await user.send({embeds: [{
-                title: 'Response accepted!',
+                title: 'Félicitation ! Votre candidature a été acceptée !',
                 description: welc,
                 fields: [
-                	{name: 'Server', value: `${msg.channel.guild.name} (${msg.channel.guild.id})`},
-                	{name: 'Form name', value: `${response.form.name}`},
-                	{name: 'Form ID', value: `${response.form.hid}`},
-                	{name: 'Response ID', value: `${response.hid}`}
+                	{name: '-', value: `${response.form.name}`},
                 ],
                 color: parseInt('55aa55', 16),
                 timestamp: new Date().toISOString()

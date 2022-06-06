@@ -40,7 +40,7 @@ module.exports = {
 			msg = conf.msg;
 		} else {
 			await form.delete()
-			msg = 'Form deleted!';
+			msg = 'Formulaire supprimé !';
 		}
 
 		return msg;
