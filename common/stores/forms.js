@@ -294,12 +294,11 @@ class FormStore {
 							title: form.name,
 							description: form.description,
 							color: parseInt(!form.open ? 'aa5555' : form.color || '55aa55', 16),
-							fields: [{name: 'Response Count', value: responses?.length.toString() || '0'}],
 							footer: {
-								text: `Form ID: ${form.hid} | ` +
+								text: `Form ID: ${form.hid} \n ` +
 									  (!form.open ?
-									  'this form is not accepting responses right now!' :
-									  'react below to apply to this form!')
+									  '🔴 Les candidatures sont actuellement fermée !' :
+									  '🟢 Les candidatures sont actuellement ouvertes !')
 							}
 						}]})
 					} catch(e) {
@@ -337,12 +336,11 @@ class FormStore {
 						title: form.name,
 						description: form.description,
 						color: parseInt(!form.open ? 'aa5555' : form.color || '55aa55', 16),
-						fields: [{name: 'Response Count', value: responses?.length.toString() || '0'}],
 						footer: {
-							text: `Form ID: ${form.hid} | ` +
-								  (!form.open ?
-								  'this form is not accepting responses right now!' :
-								  'react below to apply to this form!')
+							text: `Form ID: ${form.hid} \n ` +
+								(!form.open ?
+									'🔴 Les candidatures sont actuellement fermée !' :
+									'🟢 Les candidatures sont actuellement ouvertes !')
 						}
 					}]})
 				} catch(e) {
