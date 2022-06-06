@@ -55,7 +55,7 @@ class ResponseHandler {
 
 		try {
 			var existing = await this.bot.stores.openResponses.get(user.dmChannel?.id);
-			if(existing?.id) return 'Please finish your current form before starting a new one!';
+			if(existing?.id) return 'Vous ne pouvez pas démarrer de nouveau formulaire car vous en avez déjà un en cours!';
 
 			if(form.cooldown && form.cooldown > 0) {
 				var past = (await this.bot.stores.responses.getByUser(form.server_id, user.id))?.pop();
@@ -68,7 +68,7 @@ class ResponseHandler {
 			if(cfg?.embed || form.embed) {
 				var fembeds = await this.bot.utils.genEmbeds(this.bot, form.questions, (q, i) => {
 					return {
-						name: `Question ${i+1}${form.required?.includes(i+1) ? " (required)" : ""}`,
+						name: `Question ${i+1}${form.required?.includes(i+1) ? " (obligatoire)" : ""}`,
 						value: q.value
 					}
 				}, {
@@ -142,7 +142,7 @@ class ResponseHandler {
 			user_id: user.id,
 			form: form
 		})
-		return 'Application started! Check your DMs!';
+		return 'Le formulaire t\'a été envoyé en DM !';
 	}
 
 	async sendQuestion(response, message) {
@@ -372,9 +372,8 @@ class ResponseHandler {
 		var prompt = await message.channel.messages.fetch(response.message_id);
 
 		var m = await message.channel.send({
-			content: 'Would you like to cancel your response?\n'+
-				'WARNING: This will delete all your progress. '+
-				'If you want to fill out this form, you\'ll have to start over',
+			content: 'Voulez-vous annuler votre formulaire ?\n'+
+				'ATTENTION: Ceci supprimera toutes vos réponses.',
 			components: [{type: 1, components: CONF}]
 		})
 
@@ -468,7 +467,7 @@ class ResponseHandler {
 
 		question.message = [
 			{
-				name: `Question ${number + 1}${current.required ? ' (required)' : ''}`,
+				name: `Question ${number + 1}${current.required ? ' (obligatoire)' : ''}`,
 				value: current.value
 			}
 		];
@@ -478,7 +477,7 @@ class ResponseHandler {
 		if(type.buttons) question.buttons = type.buttons(current);
 		question.buttons.push(QBTNS.cancel);
 
-		question.footer = {text: 'react with ❌ or type "cancel" to cancel.'};
+		question.footer = {text: 'réagit avec ❌ ou écrit "cancel" pour annuler.'};
 		if(type.text) question.footer.text = type.text + " " + question.footer.text;
 
 		if(!current.required) {
@@ -589,7 +588,7 @@ class ResponseHandler {
 				description: response.form.description,
 				color: parseInt('ccaa55', 16),
 				fields: [],
-				footer: {text: 'react with ✅ to finish;  react with ❌ to cancel.  respective keywords: submit, cancel'}
+				footer: {text: 'réagit avec ✅ pour terminer;  réagit avec ❌ pour annuler.  respective keywords: submit, cancel'}
 			}
 
 			var embeds = this.bot.handlers.response.buildResponseEmbeds(response, template);

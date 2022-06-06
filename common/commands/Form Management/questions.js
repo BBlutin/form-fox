@@ -23,7 +23,7 @@ module.exports = {
 
 		var embeds = await bot.utils.genEmbeds(bot, form.questions, (data, i) => {
 			return {
-				name: `**${data.value}${data.required ? " (required)" : ""}**`,
+				name: `**${data.value}${data.required ? " (obligatoire)" : ""}**`,
 				value: `**Type:** ${TYPES[data.type].alias[0]}\n\n` +
 					   (data.choices ? `**Choices:**\n${data.choices.join("\n")}\n\n` : '') +
 					   (data.other ? 'This question has an "other" option!' : '')
@@ -62,7 +62,7 @@ module.exports.subcommands.add = {
 		if(!question.value) {
 			await msg.channel.send('What question would you like to add to the form?\nType `cancel` to cancel!');
 			resp = (await msg.channel.awaitMessages({filter: m => m.author.id == msg.author.id, time: 2 * 60 * 1000, max: 1})).first();
-			if(!resp) return 'ERR! Timed out!';
+			if(!resp) return 'ERREUR! Timed out!';
 			if(resp.content.toLowerCase() == 'cancel') return 'Action cancelled!';
 			if(resp.content.length > 256) return "Question length too long! Must be 256 chars or less";
 			question.value = resp.content;
@@ -102,9 +102,9 @@ module.exports.subcommands.add = {
 			'(Use `last` to put it at the end of the other questions!)'
 		].join(""));
 		resp = (await msg.channel.awaitMessages({filter: m => m.author.id == msg.author.id, time: 2 * 60 * 1000, max: 1})).first();
-		if(!resp) return 'ERR! Timed out!';
+		if(!resp) return 'ERREUR! Timed out!';
 		if(resp.content.toLowerCase() != 'last') position = parseInt(resp.content.toLowerCase());
-		if(isNaN(position)) return 'ERR! Please provide a real number!';
+		if(isNaN(position)) return 'ERREUR! Please provide a real number!';
 
 		form.questions.splice(position - 1, 0, question);
 		try {
@@ -137,7 +137,7 @@ module.exports.subcommands.remove = {
 		if(!question) {
 			await msg.channel.send('What question would you like to remove?\nType `cancel` to cancel!');
 			resp = (await msg.channel.awaitMessages({filter: m => m.author.id == msg.author.id, time: 2 * 60 * 1000, max: 1})).first();
-			if(!resp) return 'ERR! Timed out!';
+			if(!resp) return 'ERREUR! Timed out!';
 			if(resp.content.toLowerCase() == 'cancel') return 'Action cancelled!';
 			question = resp.content;
 		}
@@ -201,7 +201,7 @@ module.exports.subcommands.set = {
 			await fmessage.edit({embeds: [{
 				title: data.name,
 				description: data.description,
-				fields: data.questions.map((q, n) => { return {name: `Question ${n+1}${q.required ? ' (required)' : ''}`, value: q.value} }),
+				fields: data.questions.map((q, n) => { return {name: `Question ${n+1}${q.required ? ' (obligatoire)' : ''}`, value: q.value} }),
 				color: parseInt('ee8833', 16)
 			}]});
 

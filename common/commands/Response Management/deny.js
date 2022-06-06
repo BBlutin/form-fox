@@ -21,7 +21,7 @@ module.exports = {
             '`cancel` to cancel the denial!'
         ].join(''));
 		var resp = await msg.channel.awaitMessages({filter: m => m.author.id == msg.author.id, time: 2 * 60 * 1000, max: 1});
-        if(!resp?.first()) return 'Err! Timed out!';
+        if(!resp?.first()) return 'Erreur! Timed out!';
         resp = resp.first().content;
         if(resp.toLowerCase() == 'cancel') return 'Action cancelled!';
         if(resp.toLowerCase() == 'skip') reason = '*(no reason given)*';

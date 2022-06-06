@@ -26,7 +26,7 @@ module.exports = {
 				}),
 				footer: {text: [
                     'react with ✅ to clear required questions; ',
-                    'react with ❌ to cancel. ',
+                    'réagit avec ❌ pour annuler. ',
                     'you can respond with "y", "yes", or "✅" to clear as well'
                 ].join("")}
 			}]});

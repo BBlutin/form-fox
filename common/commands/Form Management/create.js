@@ -86,7 +86,7 @@ module.exports = {
 			await form.edit({embeds: [{
 				title: data.name,
 				description: data.description,
-				fields: data.questions.map((q, n) => { return {name: `Question ${n+1}${q.required ? ' (required)' : ''}`, value: q.value} }),
+				fields: data.questions.map((q, n) => { return {name: `Question ${n+1}${q.required ? ' (obligatoire)' : ''}`, value: q.value} }),
 				color: parseInt('ee8833', 16)
 			}]});
 

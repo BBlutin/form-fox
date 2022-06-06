@@ -39,7 +39,7 @@ module.exports = {
 
 				var qembeds = await bot.utils.genEmbeds(bot, form.questions, (data, i) => {
 					return {
-						name: `**${data.value}${data.required ? " (required)" : ""}**`,
+						name: `**${data.value}${data.required ? " (obligatoire      )" : ""}**`,
 						value: `**Type:** ${TYPES[data.type].alias[0]}\n\n` +
 							   (data.choices ? `**Choices:**\n${data.choices.join("\n")}\n\n` : '') +
 							   (data.other ? 'This question has an "other" option!' : '')

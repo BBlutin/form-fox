@@ -547,12 +547,12 @@ const qTypes = {
 		}
 	},
 	'num': {
-		description: 'requires the user to enter only numbers',
-		text: "valid number required.",
+		description: 'L\'utilisateur doit entrer un nombre',
+		text: "Nombre requis.",
 		alias: ['number', 'numbers', 'num'],
 		handleMessage: async (message, response) => {
 			if(isNaN(parseInt(message.content))) {
-				await message.channel.send("Invalid response! Please provide a number value");
+				await message.channel.send("Réponse invalide ! Saisissez un nombre");
 				return undefined;
 			}
 
@@ -647,16 +647,16 @@ const qTypes = {
 		}
 	},
 	'img': {
-		description: 'requires the user to send an image',
-		text: "image attachment required.",
+		description: 'l\'utilisateur doit envoyer une image',
+		text: "Une image est requise.",
 		alias: ['image', 'img'],
 		handleMessage: async (message, response) => {
 			if(message.attachments.size == 0) {
-				await message.channel.send('Invalid response! Please attach an image');
+				await message.channel.send('Réponse invalide ! Vous devez soumettre une image valide');
 				return undefined;
 			}
 			if(!message.attachments.find(a => a.height && a.width)) {
-				await message.channel.send('Invalid response! Please attach a valid image');
+				await message.channel.send('Réponse invalide ! Vous devez soumettre une image valide');
 				return undefined;
 			}
 			response.answers.push(message.content);
@@ -665,12 +665,12 @@ const qTypes = {
 		}
 	},
 	'att': {
-		description: 'requires the user to send an attachment of any type',
-		text: "attachment required.",
+		description: 'L\'utilisateur doit ajouter une pièce jointe',
+		text: "Pièce jointe requise.",
 		alias: ['attachment', 'attach', 'att'],
 		handleMessage: async (message, response) => {
 			if(message.attachments.size == 0) {
-				await message.channel.send('Invalid response! Please add an attachment');
+				await message.channel.send('Réponse invalide ! Vous devez ajouter une pièce jointe');
 				return undefined;
 			}
 			response.answers.push(message.content);
@@ -701,35 +701,35 @@ const qButtons = {
 	other: {
 		type: 2,
 		style: 2,
-		label: 'Other',
+		label: 'Aucun',
 		custom_id: 'other',
 		emoji: '🅾️'
 	},
 	select: {
 		type: 2,
 		style: 1,
-		label: 'Select',
+		label: 'Selectionner',
 		custom_id: 'select',
 		emoji: '✏️'
 	},
 	skip: {
 		type: 2,
 		style: 2,
-		label: 'Skip',
+		label: 'Passer',
 		custom_id: 'skip',
 		emoji: '➡️'
 	},
 	submit: {
 		type: 2,
 		style: 3,
-		label: 'Submit',
+		label: 'Valider',
 		custom_id: 'submit',
 		emoji: { name: '✅'}
 	},
 	cancel: {
 		type: 2,
 		style: 4,
-		label: 'Cancel',
+		label: 'Annuler',
 		custom_id: 'cancel',
 		emoji: { name: '❌'}
 	}
@@ -739,14 +739,14 @@ const submitBtns = [
 	{
 		type: 2,
 		style: 3,
-		label: 'Submit',
+		label: 'Valider',
 		custom_id: 'submit',
 		emoji: { name: '✅'}
 	},
 	{
 		type: 2,
 		style: 4,
-		label: 'Cancel',
+		label: 'Annuler',
 		custom_id: 'cancel',
 		emoji: { name: '❌'}
 	}
@@ -769,14 +769,14 @@ module.exports = {
 		{
 			type: 2,
 			style: 4,
-			label: 'Clear',
+			label: 'Nettoyer',
 			custom_id: 'clear',
 			emoji: { name: '🗑'}
 		},
 		{
 			type: 2,
 			style: 1,
-			label: 'Cancel',
+			label: 'Annuler',
 			custom_id: 'cancel',
 			emoji: { name: '❌'}
 		}
@@ -785,14 +785,14 @@ module.exports = {
 		{
 			type: 2,
 			style: 3,
-			label: 'Confirm',
+			label: 'Confirmer',
 			custom_id: 'yes',
 			emoji: { name: '✅'}
 		},
 		{
 			type: 2,
 			style: 4,
-			label: 'Cancel',
+			label: 'Annuler',
 			custom_id: 'no',
 			emoji: { name: '❌'}
 		}
@@ -801,14 +801,14 @@ module.exports = {
 		{
 			type: 2,
 			style: 3,
-			label: 'Accept',
+			label: 'Accepter',
 			custom_id: 'accept',
 			emoji: '✅'
 		},
 		{
 			type: 2,
 			style: 4,
-			label: 'Deny',
+			label: 'Refuser',
 			custom_id: 'deny',
 			emoji: '❌'
 		},

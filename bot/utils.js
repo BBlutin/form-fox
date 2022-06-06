@@ -163,7 +163,7 @@ module.exports = {
 				bot.removeListener('messageCreate', msgListener);
 				bot.removeListener('messageReactionAdd', reactListener);
 				bot.removeListener('interactionCreate', intListener)
-				res({confirmed: false, msg: 'ERR! Timed out!'})
+				res({confirmed: false, msg: 'ERREUR! Timed out!'})
 			}, 30000);
 
 			bot.on('messageCreate', msgListener);
@@ -184,7 +184,7 @@ module.exports = {
 
 			const timeout = setTimeout(async () => {
 				bot.removeListener('messageCreate', msgListener);
-				res('ERR! Timed out!')
+				res('ERREUR! Timed out!')
 			}, time ?? 30000);
 
 			bot.on('messageCreate', msgListener);

@@ -23,7 +23,7 @@ module.exports = {
             '`cancel` pour annuler le refus !'
         ].join(''));
         var resp = await msg.channel.awaitMessages({filter: m => m.author.id == ctx.user.id, time: 2 * 60 * 1000, max: 1});
-        if(!resp?.first()) return await msg.channel.send('Err! Timed out!');
+        if(!resp?.first()) return await msg.channel.send('Erreur ! Timed out!');
         resp = resp.first().content;
         if(resp.toLowerCase() == 'cancel') return await msg.channel.send('Action annulée!');
         if(resp.toLowerCase() == 'skip') reason = '*(aucune raison spécifié)*';
