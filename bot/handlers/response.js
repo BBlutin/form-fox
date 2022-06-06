@@ -387,8 +387,8 @@ class ResponseHandler {
 		try {
 			await response.delete();
 			await prompt.edit({embeds: [{
-				title: "Response cancelled",
-				description: "This form response has been cancelled!",
+				title: "Candidature annulée",
+				description: "Cette candidature a été annulée !",
 				color: parseInt('aa5555', 16),
 				timestamp: new Date().toISOString()
 			}]});

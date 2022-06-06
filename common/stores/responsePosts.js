@@ -526,7 +526,7 @@ class ResponsePostStore {
             case 'accept':
                 var embed = msg.embeds[0];
                 embed.color = parseInt('55aa55', 16);
-                embed.footer = {text: 'Response accepted!'};
+                embed.footer = {text: 'Candidature acceptée !'};
                 embed.timestamp = new Date().toISOString();
                 embed.author = {
                     name: `${user.username}#${user.discriminator}`,
@@ -550,13 +550,11 @@ class ResponsePostStore {
                     }
 
                     await u2.send({embeds: [{
-                        title: 'Response accepted!',
+                        title: 'Candidature acceptée !',
                         description: welc,
                         fields: [
-                            {name: 'Server', value: `${msg.channel.guild.name} (${msg.channel.guild.id})`},
-                            {name: 'Form name', value: `${post.response.form.name}`},
-                            {name: 'Form ID', value: `${post.response.form.hid}`},
-                            {name: 'Response ID', value: `${post.response.hid}`}
+                            {name: 'Formulaire', value: `${post.response.form.name}`},
+                            {name: 'ID de candidature', value: `${post.response.hid}`}
                         ],
                         color: parseInt('55aa55', 16),
                         timestamp: new Date().toISOString()

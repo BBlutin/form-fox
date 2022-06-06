@@ -29,7 +29,7 @@ module.exports = {
 				return 'ERR! '+e;
 			}
 
-			return 'Responses deleted!';
+			return 'Candidature supprimée !';
 		}
 
 		var message = await msg.channel.send([
@@ -53,7 +53,7 @@ module.exports = {
 			}
 		}
 
-		return 'Responses deleted!';
+		return 'Candidature supprimée !';
 	},
 	permissions: ['MANAGE_MESSAGES'],
 	opPerms: ['DELETE_RESPONSES'],

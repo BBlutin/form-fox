@@ -43,14 +43,13 @@ module.exports = {
 			}
 
 			var template = {
-				title: `Response ${r.hid}`,
+				title: `candidature ${r.hid}`,
 				description:
-					`Form name: ${r.form.name}\n` +
-					`Form ID: ${r.form.hid}\n` +
-					`User: <@${r.user_id}>`,
+					`Formulaire: ${r.form.name}\n` +
+					`Utilisateur: <@${r.user_id}>`,
 				fields: [],
 				color,
-				footer: {text: `Response status: ${r.status}`},
+				footer: {text: `Statut de la candidature : ${r.status}`},
 				timestamp: new Date(r.received).toISOString()
 			}
 

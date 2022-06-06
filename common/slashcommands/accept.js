@@ -64,7 +64,7 @@ module.exports = {
             return `ERR! ${e.message || e}\n(Response still accepted!)`;
         }
 
-		return "Response accepted!";
+		return "Candidature acceptée !";
 	},
 	permissions: ['MANAGE_MESSAGES'],
 	opPerms: ['MANAGE_RESPONSES']

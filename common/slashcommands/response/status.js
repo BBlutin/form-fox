@@ -40,7 +40,7 @@ module.exports = {
 		}
 
 		return {embeds: [{
-			title: 'Response Status',
+			title: 'Etat de la candidature',
 			description: `Response ${resp.hid} ${['accepted', 'denied'].includes(resp.status) ? 'has been' : 'is currently'} **${resp.status}**!`,
 			color
 		}]}

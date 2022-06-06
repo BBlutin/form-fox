@@ -69,7 +69,7 @@ module.exports = {
 			return 'ERR! Response accepted, but couldn\'t message the user!';
 		}
 
-		return 'Response accepted!';
+		return 'Candidature acceptée !';
 	},
 	alias: ['acc', 'pass'],
 	permissions: ['MANAGE_MESSAGES'],
