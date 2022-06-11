@@ -125,11 +125,11 @@ bot.on("guildMemberAdd", async member => {
 	ctx.stroke();
 	ctx.beginPath();
 	ctx.drawImage(background, 0, 0, 800, 300);
-	ctx.font = "36px Arial";
+	ctx.font = "38px Arial Bold";
 	ctx.fontSize = "72px";
 	ctx.fillStyle = "#ffffff";
 	ctx.textAlign = "center";
-	ctx.fillText(member.user.username, 545, 177);
+	ctx.fillText(member.user.username, 540, 200);
 	ctx.font = "16px Arial Bold";
 	ctx.fontSize = "72px";
 	ctx.fillStyle = "#ffffff";
