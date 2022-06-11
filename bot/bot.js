@@ -1,12 +1,17 @@
 const {
 	Client,
 	Intents,
-	Options
+	Options,
+	MessageAttachment,
+	MessageEmbed
 } = require("discord.js");
-const fs				  = require("fs");
-const path 				  = require("path");
+const fs				= require("fs");
+const path				= require("path");
+const Canvas 			= require("canvas");
 
 require('dotenv').config();
+
+const WelcomeMessage = "Hey [[user]] :champagne: \nBienvenue chez Redline Performance :checkered_flag:"
 
 const bot = new Client({
 	intents: [
@@ -97,3 +102,62 @@ process.on("unhandledRejection", (e) => console.log(e));
 setup();
 bot.login(process.env.TOKEN)
 .catch(e => console.log("Trouble connecting...\n"+e));
+
+bot.on("guildMemberAdd", async member => {
+	const channel = member.guild.channels.cache.find(ch => ch.id === "982693205214629937");
+	console.log(channel)
+	if (!channel) return;
+	let role = member.guild.roles.cache.find(r => r.id === "985270038367981619");
+	console.log(role)
+	let background = await Canvas.loadImage("https://i.ibb.co/KjCWYF5/Sans-titre.png");
+	let avatar = await Canvas.loadImage(
+		member.user.displayAvatarURL({format: "png"})
+	);
+	let canvas = Canvas.createCanvas(800, 300);
+	let ctx = canvas.getContext("2d");
+	ctx.patternQuality = "bilinear";
+	ctx.filter = "bilinear";
+	ctx.antialias = "subpixel";
+	ctx.shadowColor = "rgba(0, 0, 0, 0.4)";
+	ctx.shadowOffsetY = 2;
+	ctx.shadowBlur = 2;
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.drawImage(background, 0, 0, 800, 300);
+	ctx.font = "36px Arial";
+	ctx.fontSize = "72px";
+	ctx.fillStyle = "#ffffff";
+	ctx.textAlign = "center";
+	ctx.fillText(member.user.username, 545, 177);
+	ctx.font = "16px Arial Bold";
+	ctx.fontSize = "72px";
+	ctx.fillStyle = "#ffffff";
+	ctx.textAlign = "center";
+	ctx.fillText(``, 580, 200);
+	ctx.beginPath();
+	ctx.arc(169.5, 148, 126.9, -100, Math.PI * 2, true);
+	ctx.closePath();
+	ctx.clip();
+	ctx.drawImage(avatar, 36, 21, 260, 260);
+	let welcomeMsg = WelcomeMessage.replace("[[user]]", member.user);
+	welcomeMsg = welcomeMsg.replace("[[server]]", member.guild.name);
+	welcomeMsg = welcomeMsg.replace("[[members]]", member.guild.memberCount);
+	let file = new MessageAttachment(canvas.toBuffer(), "welcome.png");
+
+	const exampleEmbed = new MessageEmbed()
+		.setColor('#0099ff')
+		.setDescription(welcomeMsg)
+		.setImage('attachment://welcome.png')
+		.setTimestamp()
+		.setFooter({
+			text: 'Redline Performance',
+			iconURL: 'https://cdn.discordapp.com/attachments/983167288935080006/984432040990625832/redline-3.png'
+		});
+
+	setTimeout(() => {
+		// channel.send(welcomeMsg, file);
+		channel.send({embeds: [exampleEmbed], files: [file]});
+	}, 1000);
+
+	if (role) return member.roles.add(role);
+});
