@@ -16,6 +16,7 @@
   "dependencies": {
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
+    "canvas": "^2.6.1",
     "pg": "^8.3.0",
     "tinycolor2": "^1.4.1"
   }
