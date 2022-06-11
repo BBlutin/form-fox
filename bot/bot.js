@@ -110,7 +110,7 @@ bot.on("guildMemberAdd", async member => {
 	if (!channel) return;
 	let role = member.guild.roles.cache.find(r => r.id === "985270038367981619");
 	console.log(role)
-	let background = await Canvas.loadImage("https://i.ibb.co/KjCWYF5/Sans-titre.png");
+	let background = await Canvas.loadImage("https://media.discordapp.net/attachments/983167288935080006/985306924130136084/bg.png");
 	let avatar = await Canvas.loadImage(
 		member.user.displayAvatarURL({format: "png"})
 	);
@@ -126,7 +126,7 @@ bot.on("guildMemberAdd", async member => {
 	ctx.beginPath();
 	ctx.drawImage(background, 0, 0, 800, 300);
 	ctx.font = "38px Arial Bold";
-	ctx.fontSize = "72px";
+	ctx.fontSize = "75px";
 	ctx.fillStyle = "#ffffff";
 	ctx.textAlign = "center";
 	ctx.fillText(member.user.username, 540, 200);
