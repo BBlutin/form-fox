@@ -45,7 +45,7 @@ bot.status = 0;
 bot.guildCount = 0;
 bot.statuses = [
 	() => `Redline Performance`,
-	() => `social.tenezia.fr/redlineperf`
+	// () => `social.tenezia.fr/redlineperf`
 	// () => `servir ${bot.users.cache.size} membres`
 	// `ff!h | https://ff.greysdawn.com`
 ];
@@ -56,7 +56,7 @@ bot.updateStatus = async function(){
 	else bot.user.setActivity(target);
 	bot.status++;
 		
-	setTimeout(()=> bot.updateStatus(), 5000) // 5 sec
+	setTimeout(()=> bot.updateStatus(), 60000) // 5 sec
 }
 
 async function setup() {
